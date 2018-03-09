@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Jaza Solutions - Contact</title>
+		<link rel = "stylesheet"
+		type = "text/css"
+		href = "JazaSolutions.css" /> 
+		<script type = "text/javascript"
+		src = "jazasolutions.js">
+		</script>
+	</head>
+	<body>
+		<div id = "header">
+			<img src="jazasolutions.png" alt = "Jaza Solutions, LLC">
+		</div>
+		<div id="nav">
+			<ul>
+				<li><a href=JazaSolutionsContact.html>Contact</a></li>
+				<li><a href=JazaSolutionsAboutUs.html>About Us</a></li>
+				<li><a href=JazaSolutionsCourses.html>Courses</a></li>
+				<li><a href=JazaSolutions.html>Home</a></li>
+			</ul>
+		</div>
+		<div class="sideRight">
+			<p> Jaza Solutions</p>
+			<p> 9818 Ushers Place </p>
+			<p> Waldorf, MD 20601 </p>
+			<br>
+			<p>301-861-2133</p>
+			<p>info@jazasolutions.com</p>
+		</div>
+		<div class = "main">
+			<p>  Get the Management Certification you need to make the next step in your career! </p>
+			<br>
+			<p>SEND A MESSAGE</p>	
+			<form class="contact-form" action="contactform.php" method="post">;
+				<input type="text" name="name" placeholder="Full Name">
+				<input type="text" name="mail" placeholder="Email">
+				<input type="text" name="subject" placeholder="Subject">
+				<textarea name="message" placeholder="Message"></textarea>
+				<button type="submit" name="submit">SEND MAIL</button>
+			</form>
+		</div>
+	<?php
+		if (isset($_POST['submit'])) {
+			$name = $_POST['name'];
+			$subject = $_POST['subject'];
+			$mailFrom = $_POST['mail'];
+			$message = $_POST['message'];
+		
+			$mailTo = "pmckeown@jazasolutions.com";
+			$headers = "From:  ".$mailFrom;
+			$txt = "You have received an email from ".$name.".\n\n".$message;
+		
+			mail($mailTo, $subject, $txt, $headers);
+			header("Location: index.php?mailsend");
+		}
+	?>
+	</body>
+	
+
+</html> 
